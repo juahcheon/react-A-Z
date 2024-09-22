@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import './Nav.css'
 
 function Nav() {
+
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 50) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+    });
+  
+    return () => {
+      window.removeEventListener('scroll', () => {});
+    }
+  }, []);
+  
+
   return (
-    <nav>
+    <nav className={`nav ${show && 'nav__black'}`}>
       <img
         alt='Netflix logo'
         src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Netflix_Logomark.png/640px-Netflix_Logomark.png'
