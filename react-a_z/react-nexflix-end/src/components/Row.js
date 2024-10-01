@@ -62,6 +62,7 @@ export default function Row({ isLargeRow, title, id, fetchUrl }) {
             <SwiperSlide>
               <img 
                 key={movie.id}
+                style={{ padding: "25px 0" }}
                 className={`row__poster ${isLargeRow && "row__posterLarge"}`}
                 src={`https://image.tmdb.org/t/p/original/${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
                 alt={movie.name}
@@ -71,7 +72,8 @@ export default function Row({ isLargeRow, title, id, fetchUrl }) {
           ))}
         </div>
       </Swiper>
-      { modalOpen && <MovieModal {...movieSelected} setModalOpen={setModalOpen} /> }
+
+      { modalOpen && (<MovieModal {...movieSelected} setModalOpen={setModalOpen} /> )}
     </section>
   )
 }
